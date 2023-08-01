@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AGT - Virtual Tour</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="output.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <style>
+        @media screen and (min-width: 800px) {
+            section {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="dark:bg-black bg-white text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500 flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <header class="flex w-full overflow-hidden pt-10 pb-1">
+        <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
+            <div class="container mx-auto flex flex-wrap items-center md:flex-no-wrap">
+                <div class="mr-4 md:mr-8">
+                    <a href="collection.html" class="text-3xl font-bold inline-block">
+                        <img src="./assets/AlexanderThomson.jpg" alt="Logo" class="inline-block h-20 w-auto mr-2">
+                        <div class="name inline-block" style="padding-left: 20px;">
+                            Alexander ‘Greek’ <br>
+                            Thomson
+                        </div>
+
+
+                    </a>
+                </div>
+                <div class="ml-auto md:hidden flex items-center justify-start">
+                    <button onclick="menuToggle()" @click="open = !open"
+                        class="tap-highlight-transparent text-black dark:text-white w-5 h-5 relative focus:outline-none"
+                        @click="open = !open">
+                        <span class="sr-only">Open main menu</span>
+                        <div class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <span aria-hidden="true"
+                                class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
+                                :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
+                            <span aria-hidden="true"
+                                class="block absolute  h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
+                                :class="{'opacity-0': open } "></span>
+                            <span aria-hidden="true"
+                                class="block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
+                                :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
+                        </div>
+                    </button>
+                </div>
+                <div id="menu"
+                    class="w-full h-0 transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center">
+                    <ul id="ulMenu"
+                        class="flex flex-col duration-300 ease-out md:space-x-5 sm:transition-none mt-5 md:flex-row md:items-center md:ml-auto md:mt-0 md:pt-0 md:border-0">
+                        <li class="group transition duration-300">
+                            <a href="collection.html" class="text-2xl" style="color: darkgray;">Collection
+                                <span
+                                    class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+                            </a>
+                        </li>
+                        <li class="group transition duration-300">
+                            <a href="biography.html" class="text-2xl" style="color: darkgray;">Biography
+                                <span
+                                    class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+                            </a>
+                        </li>
+                        <li class="group transition duration-300">
+                            <a href="virtual_tour.html" class="text-2xl">Virtual Tour
+                                <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>
+                            </a>
+                        </li>
+                        <li class="group transition duration-300">
+                            <a href="social_media.html" class="text-2xl" style="color: darkgray;">Social Media
+                                <span
+                                    class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+                            </a>
+                        </li>
+                        <li class="group transition duration-300">
+                            <a href="contact.html" class="text-2xl" style="color: darkgray;">Contact
+                                <span
+                                    class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <div class="container mx-auto">
+        <h1 class="text-3xl pt-10 pb-8" style="color: #A9A9A9">View a Virtual Tour</h1>
+        <h4>Alexander "Greek" Thomson Tour</h4>
+        <p>Discover a delightful route around Glasgow that encompasses all of Thomson's remarkable surveying buildings
+            scattered throughout the city.
+        </p>
+        <br>
+
+        <!-- Start of Alexander "Greek" Thomson Tour section -->
+        <!-- Slideshow container -->
+        <div class="slideshow-container-wrapper">
+            <div class="slideshow-container" id="agt_slideshow">
+                <div class="mySlides agt">
+                    <div class="numbertext" style="color: black">1 / 2</div>
+                    <!-- Content -->
+                    <div class="container mx-auto">
+                        <!-- <h1 class="text-3xl pt-10 pb-8"><b>Collection</b></h1> -->
+
+                        <div class="grid grid-cols-2 gap-14 md:gap-20">
+                            <div class="col-span-2 md:col-span-1 flex items-center justify-center">
+                                <!-- Updated class here -->
+                                <img src="assets/lockdownLongRunRoute.jpg" alt="AGT Route" class="constrained-image">
+                            </div>
+
+                            <section
+                                class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
+                                <div id="lockdownLongRun">
+
+                                    <div class="right-side-route-text" data-info="A fantastic sightseeing tour for all you running historians 
+                                    which captures 19 Alexander Thomson architectural beauties over almost 20 miles. The route
+                                     was shared by Dan Lowe, and the Alexander Thomson Society." data-directions="From Glasgow Green, 
+                                     head to Polmadie Bridge, onto New Rutherglen Road following the road round to the Southern 
+                                     Necropolis to visit Alexander Thomson’s Grave. It’s then a short run to the Gorbals to the 
+                                     Caledonia Road Free Church and heading back up Cathcart Road. At Cathcart, make your way to 
+                                     Netherlee Road and it’s an out and back to see Holmwood House.
+
+                                     Run to Merrylee Road then Langside Drive and divert right for Thomson’s Millbrae Crescent 
+                                     then cross the road again to Mansionhouse Road for Maria Villa. Afterwards head to and through 
+                                     Queen’s Park. Exit onto Pollokshaws Road then along Nithsdale Road where Salisbury Quadrant sits 
+                                     facing the roundabout where Nithsdale Road, Drive and Street all meet. 1-10 Moray Place is on
+                                      the left, off Nithsdale Road (careful not to miss it)."
+                                        data-route-link="https://glasgowrunningroutes.co.uk/wp-content/uploads/gpx/Alexander_Thomson_Tour.gpx"
+                                        data-route-gpx-file="assets/gpx/lockdownLongRun.gpx"
+                                        data-route-jpg="https://drive.google.com/uc?id=1k_CjTOszKlvePnYtWKJp_VjszxeEwoZg&export=download">
+                                        <div id="right-side-route-title">
+                                            <h2 style="line-height: 1.2;">Dan Lowe's Lockdown Long Run - Thomson Route
+                                            </h2>
+                                        </div>
+                                        <div id="right-side-route-description">
+                                            <p style="margin-top: 10px;">
+                                                Embark on an exhilarating sightseeing tour tailored for running
+                                                enthusiasts
+                                                and history buffs alike! This captivating route spans nearly 20 miles
+                                                and allows
+                                                you to relish the beauty of 19 architectural masterpieces by the
+                                                renowned Alexander
+                                                Thomson. This incredible tour was graciously shared by Dan Lowe in
+                                                collaboration with
+                                                the esteemed Alexander Thomson Society. Happy exploring!
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <a href="#" id="viewMore"
+                                        onclick="redirectToVirtualTourIndividual('lockdownLongRun')">View More</a>
+                                </div>
+                            </section>
+                        </div>
+
+
+                    </div>
+                    <div class="text" style="color: black">Dan Lowe's Lockdown Long Run</div>
+                </div>
+
+                <div class="mySlides agt">
+                    <div class="numbertext" style="color: black">2 / 2</div>
+                    <!-- Content -->
+                    <div class="container mx-auto">
+                        <!-- <h1 class="text-3xl pt-10 pb-8"><b>Collection</b></h1> -->
+
+                        <div class="grid grid-cols-2 gap-14 md:gap-20">
+                            <div class="col-span-2 md:col-span-1 flex items-center justify-center">
+                                <!-- Updated class here -->
+                                <img src="assets/agtWalk.jpg" alt="AGT Route" class="constrained-image">
+                            </div>
+
+                            <section
+                                class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
+                                <div id="agtWalk">
+
+                                    <div class="right-side-route-text" data-info="The range of his buildings was extraordinary, 
+                                    from churches to villas, warehouses, tenements and even a set of steps. Much of his work was 
+                                    destroyed by German bombing during World War II and even more disappeared in the relentless 
+                                    modernisation of Glasgow during the 1960s and '70s."
+                                        data-directions="Exit Central Station and turn right. At the junction with Union Street turn right. 
+                                          The building on the opposite corner is the Ca' d'Oro building, a late 19th-century Italianate warehouse by
+                                           John Honeyman, based on the Golden House in Venice. The upper storeys are made of cast iron. A little way
+                                            down Union Street from here on the same side as the Ca' d'Oro is Thomson's Egyptian Halls, sadly in need
+                                             of some renovation.
+
+                                          Cross over then head down Union Street, turning left into Argyle Street at the next junction. Cross 
+                                          Argyle Street, then walk along to the junction with Dunlop Street where you will find the Buck's Head 
+                                          building, named after an inn that previously stood on this spot. Cross Argyle Street again, retrace your
+                                           steps, turning right into Buchanan Street. Turn left into Mitchell Lane, pass the Lighthouse, then turn right.
+                                          
+                                          Walk up Mitchell Street, continue along West Nile Street then turn left into St Vincent Street. Continue 
+                                          on this for just under 0.5 miles (800m), going uphill to the junction with Pitt Street. You are now standing 
+                                          in front of 'Greek' Thomson's St Vincent Street church, one of his greatest achievements. Cross St Vincent 
+                                          Street here then head up Pitt Street to Sauchiehall Street.
+                                          
+                                          On the opposite corner is Thomson's Grecian Chamber (1865) and to the right along Scott Street is Rennie
+                                           Mackintosh's Glasgow School of Art. From the front of the Grecian Chamber turn left, head down Sauchiehall
+                                            Street to Charing Cross, then take the pedestrian bridge over the motorway to Woodlands Road. Go along here
+                                             until it ends at Park Road, turn right, then left again into Great Western Road."
+                                        data-route-link="https://drive.google.com/uc?id=1ePmipugKOeU_A2sjowK-DNMsvQLuCDwn&export=download"
+                                        data-route-gpx-file="assets/agtWalk.jpg"
+                                        data-route-jpg="https://drive.google.com/uc?id=1ePmipugKOeU_A2sjowK-DNMsvQLuCDwn&export=download">
+                                        <div id="right-side-route-title">
+                                            <h2 style="line-height: 1.2;">Alexander 'Greek' Thomson Walk
+                                            </h2>
+                                        </div>
+                                        <div id="right-side-route-description">
+                                            <p style="margin-top: 10px;">
+                                                More than any other architect Alexander Thomson was responsible
+                                                for the shaping of Glasgow with his innovative use and interpretation
+                                                of classical Greek designs. Born in 1817 in the Stirlingshire
+                                                village of Balfron, he moved to Glasgow to live with an older
+                                                brother. He was apprenticed to an architect and began studying the
+                                                plans, drawings and engravings of classical architecture. This influence
+                                                dominated his later style and earned him the nickname 'Greek' Thomson
+                                                although he never travelled abroad.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <a href="#" id="viewMore" onclick="redirectToVirtualTourIndividual('agtWalk')">View
+                                        More</a>
+                                </div>
+                            </section>
+                        </div>
+
+                    </div>
+                    <div class="text" style="color: black">Alexander "Greek" Thomson Walk</div>
+                </div>
+
+                <br>
+                <br>
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1, 'agt')" style="color:black">&#10094;</a>
+                <a class="next" onclick="plusSlides(1, 'agt')" style="color:black">&#10095;</a>
+            </div>
+            <br>
+            <!-- The dots/circles -->
+            <div style="text-align:center">
+                <span class="dot agt" onclick="currentSlide(1, 'agt')"></span>
+                <span class="dot agt" onclick="currentSlide(2, 'agt')"></span>
+            </div>
+
+        </div>
+        <!-- End of Alexander "Greek" Thomson Tour section -->
+
+        <br>
+
+        <!-- Start of General Glasgow Tour section -->
+        <h4>Glasgow Tours, Buildings: Architecture Guide</h4>
+        <p>From its historic streets near the cathedral, which the main city is thought to have sprouted
+            from, to its former dockyards, there's so much to learn.
+        </p>
+        <br>
+        <!-- Slideshow container -->
+        <div class="slideshow-container-wrapper">
+            <div class="slideshow-container" id="glasgow_slideshow">
+                <div class="mySlides glasgow">
+                    <div class="numbertext" style="color: black">1 / 3</div>
+                    <!-- Content -->
+                    <div class="container mx-auto">
+                        <!-- <h1 class="text-3xl pt-10 pb-8"><b>Collection</b></h1> -->
+
+                        <div class="grid grid-cols-2 gap-14 md:gap-20">
+                            <div class="col-span-2 md:col-span-1 flex items-center justify-center">
+                                <!-- Updated class here -->
+                                <img src="assets/mackintosh.jpg" alt="Route" class="constrained-image">
+                            </div>
+
+                            <section
+                                class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
+                                <div id="mackintosh">
+
+                                    <div class="right-side-route-text" data-info="Thanks to @Paul4Jags on Twitter for inspiring this 
+                                    route which follows the works of Charles Rennie Mackintosh across Glasgow. Tired of running the 
+                                    same streets during lockdown, Paul made a half marathon route to appreciate Glasgow’s famous 
+                                    architect. Check out his Glasgow Punter blog for fantastic photos and a wee history lesson of his 
+                                    Mackintosh run (it’s also good for a read about his musings about all things Glasgow). If you’re 
+                                    interested in finding out more about Charles Rennie Mackintosh, check out the Charles Rennie Mackintosh 
+                                    Society."
+                                        data-directions="Starting where St Vincent Street becomes Argyle Street, start your watches at the foot of the impressive statue which looks over you as you make your way to Kelvingrove Art Gallery and Museum which is home to the Charles Rennie Mackintosh and Glasgow Style gallery. After running round the right side of the Art Gallery and along Kelvin Way, take a left up University Avenue and turn right into the university library where you’ll see the peculiar door of The Mackintosh House sitting above your head.
+
+                                    Continue straight on until you reach Great Western Road, taking a left to the Botanic Gardens then running on the roads behind the park and up Shakespeare Street. Cross the traffic lights at Maryhill Road to reach Ruchill Church Hall, which as Paul says is now overshadowed by the later church building next to it. After passing the hall, run onto the canal for a short spell and re-join Maryhill Road at the fire station. Stay on the left-hand side so that you get up close to Queen’s Cross Church which is home to the Charles Rennie Mackintosh Society. Cross at the traffic lights to stay on Maryhill Road to St. Georges Cross then follow St George’s Road to cross over the M8.
+                                    
+                                    As soon as you cross the motorway, continue straight up Renfrew Street towards Glasgow School of Art. Sadly, due to the fires and utter destruction that they caused, the street is closed off and The Mackintosh Building is surrounded by scaffolding. Detour up round Scott then Hill Street then head back down Dalhousie Street and continue to Bath Street where The Glasgow Art Club sits at 185.
+                                    
+                                    Head back to Sauchiehall Street, make sure you don’t miss the Willow Tea Rooms at 217 (it’ll be on your right side), and run along to Buchanan Bus Station, crossing over to Townhead where you follow the path through the houses all the way to the end. Run up past and behind the church where the path will take you round to Martyrs School which sits opposite St Mungo’s.
+                                    
+                                    Follow the path down onto Castle Street then through Glasgow Cathedral and cross the bridge over to the Necropolis. The gravestone of Alexander McCall, which is an early work of Mackintosh, is in the lower graveyard facing towards Tennent’s Brewery.  Check Mackintosh Architecture for what you’re looking out for.
+                                    
+                                    Run back into town via Duke Street and George Square, taking a left on Hope Street then another left into Renfield Lane. Stereo café/bar is now housed in the ground floor of the old Daily Record Building so be sure to look up to see this Mackintosh. Afterwards zigzag your way to Mitchell Street for The Lighthouse, which was The Glasgow Herald Building. Continue down the lane onto Argyle Street and cross the river via Jamaica Street.
+                                    
+                                    Once you reach West Street, you follow part of the Great Scottish Run route and pass Scotland Street School on your left and continue on to Bellahouston Park via Maxwell Drive, Nithsdale Road and Dumbreck Road. Follow signs for House for an Art Lover then run down past the sculpture park to exit Bellahouston. After a short spell on Paisley Road West, turn left down Whitefield Road then right past the Science Centre, BBC and STV studios. Cross the river via the Clyde Arc and run up Finnieston Street (watch at the busy M8 traffic lights) and back to Big Charlie."
+                                        data-route-link="https://glasgowrunningroutes.co.uk/wp-content/uploads/gpx/Charles_Rennie_Mackintosh.gpx"
+                                        data-route-gpx-file="assets/gpx/mackintosh.gpx"
+                                        data-route-jpg="https://drive.google.com/uc?id=1GLZHqILa4zXnwRQuxorvj812XD01KUPs&export=download">
+                                        <div id="right-side-route-title">
+                                            <h2 style="line-height: 1.2;">The Mackintosh Tour
+                                            </h2>
+                                        </div>
+                                        <div id="right-side-route-description">
+                                            <p style="margin-top: 10px;">
+                                                This 14 mile tour of Glasgow takes in some of the works of Charles
+                                                Rennie Mackintosh,
+                                                from the famous Glasgow School of Art to the delightful House for an Art
+                                                Lover and
+                                                Scotland Street School.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <a href="#" id="viewMore"
+                                        onclick="redirectToVirtualTourIndividual('mackintosh')">View More</a>
+                                </div>
+                            </section>
+                        </div>
+
+
+                    </div>
+                    <div class="text" style="color: black">The Mackintosh Tour</div>
+                </div>
+
+                <div class="mySlides glasgow">
+                    <div class="numbertext" style="color: black">2 / 3</div>
+                    <!-- Content -->
+                    <div class="container mx-auto">
+                        <!-- <h1 class="text-3xl pt-10 pb-8"><b>Collection</b></h1> -->
+
+                        <div class="grid grid-cols-2 gap-14 md:gap-20">
+                            <div class="col-span-2 md:col-span-1 flex items-center justify-center">
+                                <!-- Updated class here -->
+                                <img src="assets/blythswood.jpg" alt="Route" class="constrained-image">
+                            </div>
+
+                            <section
+                                class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
+                                <div id="blythswood">
+
+                                    <div class="right-side-route-text" data-info="Published on 21 August 2021, this route takes 
+                                    in current diversions on the canal and at the Glasgow School of Art."
+                                        data-directions="This circular route starts at Blythswood Square, atop Blythswood Hill in central Glasgow, 
+                                        amid beautiful Georgian architecture. The route goes out along the Scottish Canal network 
+                                        from Speirs Wharf to Kelvin viaduct, and then drops down to the Kelvin River. It continues 
+                                        along the river paths and back into Kelvingrove Park, across a foot bridge across the M8, 
+                                        and then back via the Glasgow School of Art. There is a short diversion off the canal tow 
+                                        path where it is closed for refurbishment in 2021."
+                                        data-route-link="https://glasgowrunningroutes.co.uk/wp-content/uploads/gpx/The_Blythswood.gpx"
+                                        data-route-gpx-file="assets/gpx/blythswood.gpx"
+                                        data-route-jpg="https://drive.google.com/uc?id=1DpgGGisTt2386PCeDllRNiiWWilt8_th&export=download">
+                                        <div id="right-side-route-title">
+                                            <h2 style="line-height: 1.2;">The Blythswood
+                                            </h2>
+                                        </div>
+                                        <div id="right-side-route-description">
+                                            <p style="margin-top: 10px;">
+                                                From town to the canal and returning via the Kelvin and Glasgow School
+                                                of Art.
+                                                Nearly 8 miles with the occasional wee hill.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <a href="#" id="viewMore"
+                                        onclick="redirectToVirtualTourIndividual('blythswood')">View More</a>
+                                </div>
+                            </section>
+                        </div>
+
+
+                    </div>
+                    <div class="text" style="color: black">The Blythswood</div>
+                </div>
+
+                <div class="mySlides glasgow">
+                    <div class="numbertext" style="color: black">3 / 3</div>
+                    <!-- Content -->
+                    <div class="container mx-auto">
+                        <!-- <h1 class="text-3xl pt-10 pb-8"><b>Collection</b></h1> -->
+
+                        <div class="grid grid-cols-2 gap-14 md:gap-20">
+                            <div class="col-span-2 md:col-span-1 flex items-center justify-center">
+                                <!-- Updated class here -->
+                                <img src="assets/glasgow_stadium.jpg" alt="Route" class="constrained-image">
+                            </div>
+
+                            <section
+                                class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
+                                <div id="glasgow_stadium">
+
+                                    <div class="right-side-route-text" data-info="This isn’t just a Glasgow Stadium Tour. You get to see 
+                                    so much more of the city but let’s start with the first football stadium."
+                                        data-directions="Start at the Botanics, run up Queen Margaret Drive and head down Maryhill Road with a 
+                                    wee detour to tick off Firhill, home of Kingsley and Partick Thistle.Then carry on towards town, up 
+                                    Sauchiehall Street, Cathedral Street past the University of Strathclyde and take in the beauty of Glasgow 
+                                    Cathedral.
+
+                                    Onto Duke Street, then Clyde Gateway towards Dalmarnock where you’ll pass Celtic Park and the Emirates Arena 
+                                    which hosts the Sir Chris Hoy Velodrome. Next, you head over the River Clyde to Rutherglen then Toryglen, turning 
+                                    left up Aikenhead Road with Hampden on your right hand side.
+                                    
+                                    Take a detour through King’s Park for a great view over the city then through Linn Park Golf Club, crossing the
+                                     beautiful Monet like bridge over the White Cart Water. Exit Linn Park to the right onto Clarkston Road, then 
+                                     left onto Merrylee Road and follow the B762 until turning right at Pollokshaws Road. Take the route through 
+                                     the scenic Pollok and Bellahouston Parks then not long after mile 18, you’ll reach Ibrox, home of Rangers.
+                                    
+                                    Head back towards the River Clyde, passing the BBC offices, the Science Centre, crossing over the river past the 
+                                    SECC, Armadillo and Hydro. Follow the cycle path towards the Riverside Museum, go left through the underpass and 
+                                    head towards and up Byres Road back to the Botanics. When I ran this route (or a near version of it) it was very 
+                                    early in the morning so there wasn’t much traffic on the roads. It was great running through these usually bustling 
+                                    areas of Glasgow as the sun was coming up but bear in mind how busy it could be at other times (especially if there’s 
+                                    football on and watch out for golf balls at Linn Park)."
+                                        data-route-link="https://glasgowrunningroutes.co.uk/wp-content/uploads/gpx/Glasgow_Stadium_Tour.gpx"
+                                        data-route-gpx-file="assets/gpx/glasgow_stadium.gpx"
+                                        data-route-jpg="https://drive.google.com/uc?id=1iX6pQkCMMcLzZO2Q3ccgBxbLUS8P5b7l&export=download">
+                                        <div id="right-side-route-title">
+                                            <h2 style="line-height: 1.2;">Glasgow Stadium Tour
+                                            </h2>
+                                        </div>
+                                        <div id="right-side-route-description">
+                                            <p style="margin-top: 10px;">
+                                                This isn't just a Glasgow Stadium Tour. You get to see so much more
+                                                of the city and is a great route for marathon training.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <a href="#" id="viewMore"
+                                        onclick="redirectToVirtualTourIndividual('glasgow_stadium')">View More</a>
+                                </div>
+                            </section>
+                        </div>
+
+
+                    </div>
+                    <div class="text" style="color: black">Glasgow Stadium Tour</div>
+                </div>
+                <br>
+                <br>
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1, 'glasgow')" style="color:black">&#10094;</a>
+                <a class="next" onclick="plusSlides(1, 'glasgow')" style="color:black">&#10095;</a>
+            </div>
+            <br>
+            <!-- The dots/circles -->
+            <div style="text-align:center">
+                <span class="dot glasgow" onclick="currentSlide(1, 'glasgow')"></span>
+                <span class="dot glasgow" onclick="currentSlide(2, 'glasgow')"></span>
+                <span class="dot glasgow" onclick="currentSlide(3, 'glasgow')"></span>
+            </div>
+
+        </div>
+
+        <!-- End of General Glasgow Tour section -->
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto">
+        <div class="max-w-screen-xl py-16 mx-auto">
+            <div class="grid grid-cols-1 gap-8 text-center mx-auto">
+                <div>
+                    <p><b>Alexander ‘Greek’ Thomson</b></p>
+                    <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+                        Glasgow Life, 38 Albion Street, Glasgow G1<br />info@glasgowlife.org.uk
+                    </p>
+                    <div class="flex mx-auto">
+                        <div class="mx-auto space-x-6 flex mt-8 text-gray-600 dark:text-gray-300">
+                            <a class="transition duration-300 hover:opacity-75" href="https://www.facebook.com"
+                                target="_blank" rel="noreferrer">
+                                <span class="sr-only"> Facebook </span>
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fillRule="evenodd"
+                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                        clipRule="evenodd" />
+                                </svg>
+                            </a>
+                            <a class="transition duration-300 hover:opacity-75" href="https://www.instagram.com"
+                                target="_blank" rel="noreferrer">
+                                <span class="sr-only"> Instagram </span>
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fillRule="evenodd"
+                                        d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                        clipRule="evenodd" />
+                                </svg>
+                            </a>
+                            <a class="transition duration-300 hover:opacity-75" href="https://twitter.com"
+                                target="_blank" rel="noreferrer">
+                                <span class="sr-only"> Twitter </span>
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                                </svg>
+                            </a>
+                            <a class="transition duration-300 hover:opacity-75" href="https://www.linkedin.com"
+                                target="_blank" rel="noreferrer">
+                                <span class="sr-only">LinkedIn</span>
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-8 text-xs text-gray-600 dark:text-gray-300 text-center">
+                © 2023 Developed and Designed by
+                <a href="https://www.linkedin.com/in/joão-franco-452161195/" class="underline">Glasgow Life</a>
+            </p>
+        </div>
+    </footer>
+    <!-- Same HTML and CSS code as provided before -->
+
+    <!-- JavaScript -->
+    <script>
+        let agtSlideIndex = 1;
+        let glasgowSlideIndex = 1;
+        showSlides(agtSlideIndex, "agt");
+        showSlides(glasgowSlideIndex, "glasgow");
+
+        function currentSlide(n, slideName) {
+            if (slideName === "agt") {
+                showSlides((agtSlideIndex = n), "agt");
+            } else if (slideName === "glasgow") {
+                showSlides((glasgowSlideIndex = n), "glasgow");
+            }
+        }
+
+        function showSlides(n, slideName) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides " + slideName);
+            let dots = document.getElementsByClassName("dot " + slideName);
+            if (n > slides.length) {
+                if (slideName === "agt") {
+                    agtSlideIndex = 1;
+                    n = 1;
+                } else if (slideName === "glasgow") {
+                    glasgowSlideIndex = 1;
+                    n = 1;
+                }
+            }
+            if (n < 1) {
+                if (slideName === "agt") {
+                    agtSlideIndex = slides.length;
+                } else if (slideName === "glasgow") {
+                    glasgowSlideIndex = slides.length;
+                }
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[n - 1].style.display = "block";
+            dots[n - 1].className += " active";
+        }
+
+        function plusSlides(increment, slideName) {
+            if (slideName === "agt") {
+                showSlides(agtSlideIndex += increment, "agt");
+            }
+            else if (slideName === "glasgow") {
+                showSlides(glasgowSlideIndex += increment, "glasgow");
+            }
+        }
+
+        function redirectToVirtualTourIndividual(routeName) {
+            // Extract the data from the image's data attributes
+            console.log(routeName);
+            const title = document.getElementById(routeName).querySelector('#right-side-route-title').textContent;
+            const info = document.getElementById(routeName).querySelector('.right-side-route-text').getAttribute('data-info');
+            const directions = document.getElementById(routeName).querySelector('.right-side-route-text').getAttribute('data-directions');
+            const routeGPXFile = document.getElementById(routeName).querySelector('.right-side-route-text').getAttribute('data-route-gpx-file');
+            const routeImage = document.getElementById(routeName).querySelector('.right-side-route-text').getAttribute('data-route-jpg');
+            const routeLink = document.getElementById(routeName).querySelector('.right-side-route-text').getAttribute('data-route-link');
+            // Construct the URL of the target page with query parameters
+            const targetPageUrl = `virtual_tour_individual.html?title=${title}&info=${info}&directions=${directions}`; // Updated
+
+            sessionStorage.setItem('routeName', routeName);
+            sessionStorage.setItem('route_gpx_file', routeGPXFile);
+            sessionStorage.setItem('route_image', routeImage);
+            sessionStorage.setItem('route_link', routeLink);
+            // Redirect the user to the target page
+            window.location.href = targetPageUrl;
+        }
+
+    </script>
+
+    <!-- Script for the LightBox -->
+    <script src="fade_in.js"></script>
+    <script src="menu.js"></script>
+
+</body>
+
+</html>

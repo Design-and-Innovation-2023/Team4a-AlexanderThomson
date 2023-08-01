@@ -1,0 +1,47 @@
+
+  
+  .title-container {
+    text-align: center;
+    color: #333;
+  }
+  
+  h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 10px;
+  }
+  
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Times New Roman", Times, serif;
+    background-color: white;
+    overflow: hidden; /* Prevent vertical scrollbar during animation */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: absolute; /* Position the container absolutely */
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  /* Rest of the CSS remains unchanged */
+  
+  /* Add animation class */
+  .animated {
+    opacity: 0;
+  }
+  
+  h1 {
+    letter-spacing: 10px; /* Adjust this value to control the spacing */
+    font-size: 40px;
+    animation: bounce 2s infinite;
+    display: inline-block;
+  }
+

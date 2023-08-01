@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGT - Collection</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="output.css" />
+  <link rel="stylesheet" href="stylesheet.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <!-- Include the html2pdf.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Start - Fancybox Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <!-- End - Fancybox Scripts -->
+</head>
+
+<body
+  class="dark:bg-black bg-white text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500 flex flex-col min-h-screen">
+  <!-- Navbar -->
+  <header class="flex w-full overflow-hidden pt-10 pb-1">
+    <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
+      <div class="container mx-auto flex flex-wrap items-center md:flex-no-wrap">
+        <div class="mr-4 md:mr-8">
+          <a href="collection.html" class="text-3xl font-bold inline-block">
+            <img src="./assets/AlexanderThomson.jpg" alt="Logo" class="inline-block h-20 w-auto mr-2">
+            <div class="name inline-block" style="padding-left: 20px;">
+              Alexander ‘Greek’ <br>
+              Thomson
+            </div>
+          </a>
+        </div>
+        <div class="ml-auto md:hidden flex items-center justify-start">
+          <button onclick="menuToggle()" @click="open = !open"
+            class="tap-highlight-transparent text-black dark:text-white w-5 h-5 relative focus:outline-none"
+            @click="open = !open">
+            <span class="sr-only">Open main menu</span>
+            <div class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <span aria-hidden="true"
+                class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
+                :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
+              <span aria-hidden="true"
+                class="block absolute  h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
+                :class="{'opacity-0': open } "></span>
+              <span aria-hidden="true"
+                class="block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
+                :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
+            </div>
+          </button>
+        </div>
+        <div id="menu"
+          class="w-full h-0 transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center">
+          <ul id="ulMenu"
+            class="flex flex-col duration-300 ease-out md:space-x-5 sm:transition-none mt-5 md:flex-row md:items-center md:ml-auto md:mt-0 md:pt-0 md:border-0">
+            <li class="group transition duration-300">
+              <a href="collection.html" class="text-2xl">Collection
+                <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="biography.html" class="text-2xl" style="color: darkgray;">Biography
+                <span
+                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="virtual_tour.html" class="text-2xl" style="color: darkgray;">Virtual Tour
+                <span
+                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="social_media.html" class="text-2xl" style="color: darkgray;">Social Media
+                <span
+                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="contact.html" class="text-2xl" style="color: darkgray;">Contact
+                <span
+                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container mx-auto">
+    <h1 class="text-3xl pt-10 pb-8"><b>Collection</b></h1>
+    <section class="text-neutral-700">
+      <div class="hover-images">
+        <div class="container w-full">
+          <div class="flex flex-wrap">
+            <!-- Container 1 -->
+            <div class="flex w-full md:w-1/2 flex-wrap">
+              <!-- Container 1.1 -->
+              <div class="flex w-full md:w-1/2 flex-wrap">
+                <div class="w-full p-1">
+                  <div class="overflow-hidden h-full w-full">
+                    <img
+                      src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.1.jpg"
+                      alt="1" class="block h-full w-full object-cover object-center image-hover"
+                      data-accession-no="898034/" data-mitchell-library-no="1" data-category="Building"
+                      data-title="Caledonia Road Church: elevation to Cathcart Road and tenements"
+                      data-location="Gorbals, Glasgow. Still standing"
+                      data-technique="Black ink drawing with very few graphite lines beneath"
+                      data-notes="Signed Robert McDougall & Baird & Thomson" data-date="14/10/1856"
+                      data-ar-description="The church, Alexander Thomson's first, was erected together 
+                      with two adjoing tenements in Cathcart Road and Hospital Street as an architectural 
+                      grouping, with coursing of stonework and window detailing for example, being carried
+                       across all three buildings. The ruin of the church being one of the few remaining 
+                       early features of 19th century Gorbals to remain (Glasgow City Council)"
+                      map-link="https://www.google.com/maps/embed?pb=!4v1689878540524!6m8!1m7!1s1rbvPWgbyiHwiykqVZ6pzQ!2m2!1d55.8471065946759!2d-4.254507526697345!3f262.55045!4f0!5f0.7820865974627469"
+                      onclick="redirectToInformationPage(this)" />
+                  </div>
+                </div>
+                <div class="w-full p-1">
+                  <div class="overflow-hidden h-full w-full">
+                    <img
+                      src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.2.jpg"
+                      alt="2" class="block h-full w-full object-cover object-center image-hover"
+                      data-accession-no="898034/" data-mitchell-library-no="2" data-category="Building"
+                      data-title="Caledonia Road Church: elevation to Hospital Street and tenements"
+                      data-location="Gorbals, Glasgow. Still standing"
+                      data-technique="Black ink drawing with very few graphite lines beneath"
+                      data-notes="Signed J Robertson" data-date="7/9/1856"
+                      data-ar-description="The church, Alexander Thomson's first, was erected together 
+                      with two adjoing tenements in Cathcart Road and Hospital Street as an architectural 
+                      grouping, with coursing of stonework and window detailing for example, being carried
+                       across all three buildings. The ruin of the church being one of the few remaining 
+                       early features of 19th century Gorbals to remain (Glasgow City Council)"
+                      map-link="https://www.google.com/maps/embed?pb=!4v1689878540524!6m8!1m7!1s1rbvPWgbyiHwiykqVZ6pzQ!2m2!1d55.8471065946759!2d-4.254507526697345!3f262.55045!4f0!5f0.7820865974627469"
+                      onclick="redirectToInformationPage(this)" />
+                  </div>
+                </div>
+                <div class="w-full md:w-1/2 p-1">
+                  <div class="overflow-hidden h-full w-full">
+                    <img alt="3" data-record-number="3"
+                      class="block h-full w-full object-cover object-center image-hover"
+                      src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.3.jpg"
+                      data-ar-description="The church, Alexander Thomson's first, was erected together 
+                      with two adjoing tenements in Cathcart Road and Hospital Street as an architectural 
+                      grouping, with coursing of stonework and window detailing for example, being carried
+                       across all three buildings. The ruin of the church being one of the few remaining 
+                       early features of 19th century Gorbals to remain (Glasgow City Council)"
+                      onclick="redirectToInformationPage(this)" />
+                  </div>
+                </div>
+                <div class="w-full md:w-1/2 p-1">
+                  <div class="overflow-hidden h-full w-full">
+                    <img alt="4" data-record-number="4"
+                      class="block h-full w-full object-cover object-center image-hover"
+                      src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.4.jpg"
+                      data-ar-description="The church, Alexander Thomson's first, was erected together 
+                      with two adjoing tenements in Cathcart Road and Hospital Street as an architectural 
+                      grouping, with coursing of stonework and window detailing for example, being carried
+                       across all three buildings. The ruin of the church being one of the few remaining 
+                       early features of 19th century Gorbals to remain (Glasgow City Council)"
+                      onclick="redirectToInformationPage(this)" />
+                  </div>
+                </div>
+                <div class="w-full md:w-full p-1">
+                  <div class="overflow-hidden h-full w-full">
+                    <img alt="5" data-record-number="5"
+                      class="block h-full w-full object-cover object-center image-hover"
+                      src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.5.jpg"
+                      data-ar-description="The church, Alexander Thomson's first, was erected together 
+                      with two adjoing tenements in Cathcart Road and Hospital Street as an architectural 
+                      grouping, with coursing of stonework and window detailing for example, being carried
+                       across all three buildings. The ruin of the church being one of the few remaining 
+                       early features of 19th century Gorbals to remain (Glasgow City Council)"
+                      onclick="redirectToInformationPage(this)" />
+                  </div>
+                </div>
+              </div>
+              <!-- Container 1.2 -->
+              <div class="flex w-full md:w-1/2 flex-wrap">
+                <div class="w-full p-1">
+                  <div class="overflow-hidden h-full w-full">
+                    <img alt="10" data-record-number="10"
+                      class="block h-full w-full object-cover object-center image-hover"
+                      src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.10.jpg"
+                      data-ar-description="The church, Alexander Thomson's first, was erected together 
+                      with two adjoing tenements in Cathcart Road and Hospital Street as an architectural 
+                      grouping, with coursing of stonework and window detailing for example, being carried
+                       across all three buildings. The ruin of the church being one of the few remaining 
+                       early features of 19th century Gorbals to remain (Glasgow City Council)"
+                      onclick="redirectToInformationPage(this)" />
+                  </div>
+                </div>
+                <div class="w-full md:w-1/2 p-1">
+                  <div class="overflow-hidden h-full w-full">
+                    <img alt="17" data-record-number="17"
+                      class="block h-full w-full object-cover object-center image-hover"
+                      src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.17.jpg"
+                      data-ar-description="The Elevation of Obelisk is an architectural drawing or design that 
+                      showcases a monumental obelisk, drawing inspiration from ancient Egyptian obelisks that 
+                      symbolized power and eternity. Thomson's fascination with Greek and Egyptian aesthetics 
+                      is evident in this exquisite piece, as he masterfully combines elements from both cultures."
+                      onclick="redirectToInformationPage(this)" />
+                  </div>
+                </div>
+                <div class="w-full md:w-1/2 p-1">
+                  <div class="overflow-hidden h-full w-full">
+                    <img alt="19" data-record-number="19"
+                      class="block h-full w-full object-cover object-center image-hover"
+                      src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.19.jpg"
+                      data-ar-description="Greek and Egyptian influences to create an architectural design that 
+                      exudes magnificence and symbolism. This drawing remains a testament to Thomson's unique 
+                      artistic vision and his significant contributions to the world of architecture."
+                      onclick="redirectToInformationPage(this)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Container 2 -->
+            <div class="flex w-full md:w-1/2 flex-wrap">
+
+              <!-- Container 2.1 -->
+              <div class="w-full md:w-full p-1">
+                <div class="overflow-hidden h-full w-full">
+                  <img alt="28.ii" data-record-number="28.ii"
+                    class="block h-full w-full object-cover object-center image-hover"
+                    src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.28.ii.jpg"
+                    data-ar-description="Did you know: Alexander Thomson earned the nickname 'Greek' Thomson due to his 
+                    fascination with ancient Greek architecture and his incorporation of Greek elements into
+                     his designs. He admired the simplicity and purity of Greek architectural forms and 
+                     often used them as inspiration."
+                    onclick="redirectToInformationPage(this)" />
+                </div>
+              </div>
+              <div class="flex w-full md:w-1/2 flex-wrap">
+                <!-- Container 2.2 -->
+                <div class="flex w-full md:w-1/2 flex-wrap">
+                  <div class="w-full p-1">
+                    <div class="overflow-hidden h-full w-full">
+                      <img alt="22" data-record-number="22"
+                        class="block h-full w-full object-cover object-center image-hover"
+                        src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.22.jpg"
+                        data-ar-description="The Elevation to Dixon Street is a captivating aspect of this 
+                        architectural gem. It offers a striking visual representation of the warehouse's facade
+                         as it faces Dixon Street, a testament to Thomson's meticulous attention to detail 
+                         and his innovative approach to industrial architecture."
+                        onclick="redirectToInformationPage(this)" />
+                    </div>
+                  </div>
+                  <div class="w-full p-1">
+                    <div class="overflow-hidden h-full w-full">
+                      <img alt="23" data-record-number="23"
+                        class="block h-full w-full object-cover object-center image-hover"
+                        src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.23.jpg"
+                        data-ar-description="Today, the Dixon Street Warehouse remains a testament to 
+                        Alexander 'Greek' Thomson's legacy, a living reminder of his enduring influence
+                         on Glasgow's architectural landscape. Its elevation to Dixon Street stands as 
+                         a proud statement of Thomson's visionary approach to industrial design and his
+                          commitment to elevating the built environment with elements of classical beauty."
+                        onclick="redirectToInformationPage(this)" />
+                    </div>
+                  </div>
+                  <div class="w-full md:w-full p-1">
+                    <div class="overflow-hidden h-full w-full">
+                      <img alt="27" data-record-number="27"
+                        class="block h-full w-full object-cover object-center image-hover"
+                        src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.27.jpg"
+                        data-ar-description="Did you know: Thomson was ahead of his time in terms of architectural innovation. 
+                        His designs showcased a blend of classical Greek motifs with modern construction techniques,
+                         creating a unique architectural language that was revolutionary for the 19th century."
+                        onclick="redirectToInformationPage(this)" />
+                    </div>
+                  </div>
+                </div>
+                <div class="flex w-full md:w-1/2 flex-wrap">
+                  <div class="w-full md:w-full p-1">
+                    <div class="overflow-hidden h-full w-full">
+                      <img alt="28.vi" class="block h-full w-full object-cover object-center image-hover"
+                        src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.28.vi.jpg"
+                        data-ar-description="Did you know: One of Thomson's most famous works is the Caledonia
+                         Road Church (now known as St. Luke's), completed in 1857. The church features a striking
+                          cylindrical design with an impressive Greek-style portico, making it one of the most 
+                          iconic landmarks in Glasgow, Scotland."
+                        onclick="redirectToInformationPage(this)" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Container 2.3 -->
+              <div class="flex w-full md:w-1/2 flex-wrap">
+                <div class="flex w-full md:w-full flex-wrap">
+                  <div class="w-full md:w-full p-1">
+                    <div class="overflow-hidden h-full w-full">
+                      <img alt="28.ix" data-record-number="28.ix"
+                        class="block h-full w-full object-cover object-center image-hover"
+                        src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.28.ix.jpg"
+                        data-ar-description="Did you know: Thomson's architectural style and use of geometric patterns
+                         had a profound influence on American architect Frank Lloyd Wright. Wright even acknowledged 
+                         Thomson as a significant source of inspiration for his own work."
+                        onclick="redirectToInformationPage(this)" />
+                    </div>
+                  </div>
+
+                  <div class="w-full p-1">
+                    <div class="overflow-hidden h-full w-full">
+                      <img alt="28.v" data-record-number="28.v"
+                        class="block h-full w-full object-cover object-center image-hover"
+                        src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.28.v.jpg"
+                        data-ar-description="Did you know: Thomson didn't limit his creativity to the external 
+                        appearance of buildings; he was also a master of interior design. He often designed
+                         everything from furniture to light fixtures and even door handles, ensuring a cohesive 
+                         and harmonious experience within his buildings."
+                        onclick="redirectToInformationPage(this)" />
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+              <!-- Container 2.4 -->
+              <div class="flex w-full md:w-1/2 flex-wrap">
+                <div class="flex w-full md:w-full flex-wrap">
+                  <div class="w-full p-1">
+                    <div class="overflow-hidden h-full w-full">
+                      <img alt="28.vii" data-record-number="28.vii"
+                        class="block h-full w-full object-cover object-center image-hover"
+                        src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.28.vii.jpg"
+                        data-ar-description="Did you know: One of Thomson's commercial projects, known as the 
+                        Egyptian Halls, was built in Glasgow in 1870. This building showcased Thomson's unique
+                        interpretation of Egyptian motifs combined with Greek details. Unfortunately, the building 
+                        was damaged by a fire in 2018, but it remains an important part of Thomson's architectural legacy."
+                        onclick="redirectToInformationPage(this)" />
+                    </div>
+                  </div>
+                  <div class="w-full p-1">
+                    <div class="overflow-hidden h-full w-full">
+                      <img alt="29" data-record-number=""
+                        class="block h-full w-full object-cover object-center image-hover"
+                        src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.29.jpg"
+                        data-ar-description="Holmwood House's frieze, with its portrayal of Homer invoking the muse
+                         with his lyre, remains a captivating symbol of artistic inspiration and a testament to Alexander
+                          'Greek' Thomson's lasting impact on the world of architecture and design."
+                        onclick="redirectToInformationPage(this)" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Container 2.5 -->
+              <div class="flex w-full md:w-1/2 flex-wrap">
+                <div class="flex w-full md:w-full flex-wrap">
+                  <div class="w-full md:w-full p-1">
+                    <div class="overflow-hidden h-full w-full">
+                      <img alt="24" data-record-number="24"
+                        class="block h-full w-full object-cover object-center image-hover"
+                        src="https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.24.jpg"
+                        data-ar-description="The perspective view of Annan Town Hall offers a captivating sight of this 
+                        grand edifice, capturing its imposing presence and harmonious proportions. Located in the heart of Annan,
+                         this civic building reflects Thomson's signature fusion of classical and contemporary elements."
+                        onclick="redirectToInformationPage(this)" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+  </div>
+
+  <!-- <h3 class="text-3xl pt-10 pb-8"><b>His Architectures</b></h3>
+    <section class="text-neutral-700">
+      <div class="container w-full">
+        <div class="flex flex-wrap w-full">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C227.jpg" alt="C227" data-record-number="C227" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C387.jpg" alt="C387" data-record-number="C387" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C1513.jpg" alt="C1513" data-record-number="C1513" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C2119.jpg" alt="C2119" data-record-number="C2119" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C2609.jpg" alt="C2609" data-record-number="C2609" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C2614.jpg" alt="C2614" data-record-number="C2614" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C3864.jpg" alt="C3864" data-record-number="C3864" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8157.jpg" alt="C8157" data-record-number="C8157" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8379.jpg" alt="C8379" data-record-number="C8379" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8425.jpg" alt="C8425" data-record-number="C8425" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8426.jpg" alt="C8426" data-record-number="C8426" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8427.jpg" alt="C8427" data-record-number="C8427" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8428.jpg" alt="C8428" data-record-number="C8428" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8429.jpg" alt="C8429" data-record-number="C8429" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8430.jpg" alt="C8430" data-record-number="C8430" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8431.jpg" alt="C8431" data-record-number="C8431" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8432.jpg" alt="C8432" data-record-number="C8432" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8481.jpg" alt="C8481" data-record-number="C8481" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8482.jpg" alt="C8482" data-record-number="C8482" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8483.jpg" alt="C8483" data-record-number="C8483" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8825.jpg" alt="C8825" data-record-number="C8825" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8841.jpg" alt="C8841" data-record-number="C8841" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8914.jpg" alt="C8914" data-record-number="C8914" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8915.jpg" alt="C8915" data-record-number="C8915" onclick="redirectToInformationPage(this)">        
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8916.jpg" alt="C8916" data-record-number="C8916" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8921.jpg" alt="C8921" data-record-number="C8921" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8922.jpg" alt="C8922" data-record-number="C8922" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8928.jpg" alt="C8928" data-record-number="C8928" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8929.jpg" alt="C8929" data-record-number="C8929" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8936.jpg" alt="C8936" data-record-number="C8936" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8959.jpg" alt="C8959" data-record-number="C8959" onclick="redirectToInformationPage(this)">
+          <img src="https://res.cloudinary.com/whathellahor/image/upload/v1690519842/alexanderthomson_collection/Mitchell_Library_Web/Small/C8977.jpg" alt="C8977" data-record-number="C8977" onclick="redirectToInformationPage(this)">
+        </div>
+      </div>
+    </section>
+  </div> -->
+
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Footer -->
+  <footer class="mt-auto">
+    <div class="max-w-screen-xl py-16 mx-auto">
+      <div class="grid grid-cols-1 gap-8 text-center mx-auto">
+        <div>
+          <p><b>Alexander ‘Greek’ Thomson</b></p>
+          <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+            Glasgow Life, 38 Albion Street, Glasgow G1<br />info@glasgowlife.org.uk
+          </p>
+          <div class="flex mx-auto">
+            <div class="mx-auto space-x-6 flex mt-8 text-gray-600 dark:text-gray-300">
+              <a class="transition duration-300 hover:opacity-75" href="https://www.facebook.com" target="_blank"
+                rel="noreferrer">
+                <span class="sr-only"> Facebook </span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd"
+                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                    clipRule="evenodd" />
+                </svg>
+              </a>
+              <a class="transition duration-300 hover:opacity-75" href="https://www.instagram.com" target="_blank"
+                rel="noreferrer">
+                <span class="sr-only"> Instagram </span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd"
+                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                    clipRule="evenodd" />
+                </svg>
+              </a>
+              <a class="transition duration-300 hover:opacity-75" href="https://twitter.com" target="_blank"
+                rel="noreferrer">
+                <span class="sr-only"> Twitter </span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+              </a>
+              <a class="transition duration-300 hover:opacity-75" href="https://www.linkedin.com" target="_blank"
+                rel="noreferrer">
+                <span class="sr-only">LinkedIn</span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-8 text-xs text-gray-600 dark:text-gray-300 text-center">
+        © 2023 Developed and Designed by
+        <a href="https://www.linkedin.com/in/joão-franco-452161195/" class="underline">Glasgow Life</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Image Details -->
+  <div id="imageDetails" class="hidden md:block w-1/2 px-5">
+    <h2 id="imageTitle" class="text-xl font-semibold mt-5 mb-2"></h2>
+    <p id="imageDescription" class="text-sm text-gray-600 dark:text-gray-300"></p>
+  </div>
+
+  <!-- Script for the LightBox -->
+  <script src="fade_in.js"></script>
+  <script src="menu.js"></script>
+</body>
+
+</html>

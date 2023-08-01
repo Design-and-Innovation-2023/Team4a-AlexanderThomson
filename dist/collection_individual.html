@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexander ‘Greek’ Thomson</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="output.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="stylesheet.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <!-- Include the html2pdf.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Start - Fancybox Scripts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <!-- End - Fancybox Scripts -->
+
+  <!-- Add this style block in the <head> tag -->
+  <style>
+    /* Style for the comment form */
+    #commentForm {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #commentText {
+      resize: vertical;
+    }
+
+    #commentForm textarea,
+    #commentForm button {
+      margin-top: 8px;
+    }
+
+    /* Style for individual comment */
+    .comment-item {
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .comment-item p {
+      margin: 0;
+    }
+
+    .comment-item .comment-user {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .comment-item .comment-date {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .mySlides img {
+      object-fit: contain;
+    }
+  </style>
+<style>
+  .right-side {
+    position: relative;
+  }
+
+  .button-container {
+    display: flex;
+  }
+
+  .button-container button {
+    margin-right: 10px; /* Add some spacing between buttons */
+  }
+
+  .closeBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+</style>
+
+<body
+  class="dark:bg-black bg-white text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500 flex flex-col min-h-screen">
+  <!-- Navbar -->
+  <header class="flex w-full overflow-hidden pt-10 pb-1">
+    <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
+      <div class="container mx-auto flex flex-wrap items-center md:flex-no-wrap">
+        <div class="mr-4 md:mr-8">
+          <a href="collection.html" class="text-3xl font-bold inline-block">
+            <img src="./assets/AlexanderThomson.jpg" alt="Logo" class="inline-block h-20 w-auto mr-2">
+            <div class="name inline-block" style="padding-left: 20px;">
+              Alexander ‘Greek’ <br>
+              Thomson
+            </div>
+          </a>
+        </div>
+        <div class="ml-auto md:hidden flex items-center justify-start">
+          <button onclick="menuToggle()" @click="open = !open"
+            class="tap-highlight-transparent text-black dark:text-white w-5 h-5 relative focus:outline-none"
+            @click="open = !open">
+            <span class="sr-only">Open main menu</span>
+            <div class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <span aria-hidden="true"
+                class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
+                :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
+              <span aria-hidden="true"
+                class="block absolute  h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
+                :class="{'opacity-0': open } "></span>
+              <span aria-hidden="true"
+                class="block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
+                :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
+            </div>
+          </button>
+        </div>
+        <div id="menu"
+          class="w-full h-0 transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center">
+          <ul id="ulMenu"
+            class="flex flex-col duration-300 ease-out md:space-x-5 sm:transition-none mt-5 md:flex-row md:items-center md:ml-auto md:mt-0 md:pt-0 md:border-0">
+            <li class="group transition duration-300">
+              <a href="collection.html" class="text-2xl">Collection
+                <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="biography.html" class="text-2xl" style="color: darkgray;">Biography
+                <span
+                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="virtual_tour.html" class="text-2xl" style="color: darkgray;">Virtual Tour
+                <span
+                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="social_media.html" class="text-2xl" style="color: darkgray;">Social Media
+                <span
+                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="contact.html" class="text-2xl" style="color: darkgray;">Contact
+                <span
+                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Content -->
+  <div class="container mx-auto">
+    <h1 class="text-3xl pt-10 pb-8"><b>Collection</b></h1>
+
+    <div class="grid grid-cols-2 gap-14 md:gap-20">
+      <div class="col-span-2 md:col-span-1 flex items-center justify-center"> <!-- Updated class here -->
+        <img src="" alt="Logo" class="constrained-image">
+      </div>
+
+      <section class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
+        <div class="right-side">
+          <div class="button-container">
+            
+            <button class="shareBtn" onclick="shareToSocialMedia()">
+              <i class="fas fa-share-alt"></i>
+            </button>
+            <button class="ttsBtn" onclick="speakPopupDetails()">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <button class="closeBtn" onclick="goBack()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+
+          <div id="right-side-title"></div>
+          <div id="right-side-date"></div>
+          <div id="right-side-accession-no"></div>
+          <div id="right-side-mitchell-library-no"></div>
+          <div id="right-side-category"></div>
+          <div id="right-side-technique"></div>
+          <div id="right-side-notes"></div>
+          <div id="right-side-location"></div>
+
+          <iframe id="popup-content-map" width="100%" height="850" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <br>
+          <div class="ar_section">
+            <p style="font-size: 16px">
+              Use the button below to scan the Hiro image that is placed near this building for extra content!
+            </p>
+            <button id="right-side-button" onclick="viewInAR()">View In AR</button>
+            <p style="font-size:12px">
+              Having trouble using this feature? <a href="#" class="tutorialLink" onclick="openPopup()">Try it in just 3 steps!</a>
+            </p>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Tutorial Popup -->
+    <div id="tutorialPopup" class="tutorial-popup">
+      <div class="tutorial-popup-content">
+        <h2 style="text-align: center;">Augmented Reality Tutorial</h2>
+        <!-- Add your tutorial content here -->
+        <!-- Slideshow container -->
+        <div class="slideshow-container-wrapper">
+              <div class="slideshow-container">
+                  <div class="mySlides">
+                      <div class="numbertext" style="color: black">1 / 3</div>
+                      <img src="assets/tutorial/step1.jpg"
+                          alt="Step 1">
+                      <div class="text" style="color: black">Step 1: Select the "View in AR" button to start scanning.</div>
+                  </div>
+
+                  <div class="mySlides">
+                      <div class="numbertext" style="color: black">2 / 3</div>
+                      <img src="assets/tutorial/step2.jpg"
+                          alt="Step 2">
+                      <div class="text" style="color: black">Step 2: Look for the Hiro image placed near the building which looks like this image.</div>
+                  </div>
+
+                  <div class="mySlides">
+                      <div class="numbertext" style="color: black">3 / 3</div>
+                      <img src="assets/tutorial/step3.jpg"
+                          alt="Step 3">
+                      <div class="text" style="color: black">Step 3: Point the camera towards the Hiro image and an image will appear!</div>
+                  </div>
+                  <br>
+                  <br>
+
+                  <!-- Next and previous buttons -->
+                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+              </div>
+              <br>
+              <!-- The dots/circles -->
+              <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+              </div>
+          
+      </div>
+
+        <br>
+
+        <button class="close-btn" onclick="closePopup()">X</button>
+      </div>
+    </div>
+
+    <!-- Leave a Reaction/Comments Section -->
+    <div class="mt-10">
+      <h2 class="text-2xl font-semibold mb-3">Leave a Comment</h2>
+      <form id="reactionForm" class="mb-5">
+        <div class="flex flex-col">
+          <label for="name" class="mb-1">Your Name</label>
+          <input type="text" id="name" name="name" required placeholder="John Doe" class="border rounded px-2 py-1">
+        </div>
+        <div class="flex flex-col mt-2">
+          <label for="reaction" class="mb-1">Your Comment</label>
+          <textarea id="reaction" name="reaction" rows="4" required
+            placeholder="What an incredible experience! Learning about the rich history of this site was truly eye-opening. Highly recommended!"
+            class="border rounded px-2 py-1"></textarea>
+        </div>
+
+        <button type="submit" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Post</button>
+      </form>
+
+      <!-- Scrollable container showing the latest 3 comments -->
+      <div class="overflow-y-scroll" style="max-height: 300px;">
+        <div id="reactionsList">
+          <!-- Comments will be displayed here -->
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <script>
+function goBack() {
+    // Redirect back to the previous page
+    window.history.back();
+  }
+    
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+    }
+    // Function to check if a comment is valid
+    function isCommentValid(comment) {
+      // Define an array of inappropriate words (you can add more if needed)
+      const inappropriateWords = [
+        'inappropriate', 'spam', 'offensive', 'rude', 'vulgar', 'hate speech', 'obscene', 'racist',
+        'sexist', 'harassment', 'threats', 'discrimination', 'abuse', 'profanity', 'violent', 'illegal',
+        'scam', 'misleading', 'adult content', 'pornographic', 'phishing', 'trolling', 'disrespectful',
+        'plagiarism', 'propaganda', 'fake news', 'intolerance', 'bullying', 'harmful', 'sensitive topics',
+        'harmful ideologies', 'controversial', 'xenophobic', 'homophobic', 'transphobic', 'blasphemous',
+        'cult', 'sect', 'conspiracy', 'drug-related', 'weapon-related', 'suicidal', 'self-harm',
+        'terrorism', 'extremism', 'prejudice', 'bigoted', 'degrading', 'spammy', 'fraudulent',
+        'scandalous', 'provocative', 'provoking', 'inflammatory', 'inciting', 'incendiary', 'deceptive',
+        'manipulative', 'manipulating', 'exploitative', 'malicious', 'malevolent', 'threatening',
+        'disinformation', 'malignant', 'cyberbullying', 'online harassment', 'defamatory', 'deceitful',
+        'harassment', 'stalking', 'stalker', 'hateful', 'improper', 'indecent', 'indecorous', 'lewd',
+        'licentious', 'off-color', 'racy', 'risqué', 'salacious', 'sensual', 'sexually explicit', 'smutty',
+        'suggestive', 'tasteless', 'unseemly', 'vulgar', 'discriminatory', 'derogatory', 'hateful',
+        'disparaging', 'off-color', 'racial slurs', 'insulting', 'vexatious', 'harassing', 'harming',
+        'self-destructive', 'cyberbully', 'toxic', 'harmful content', 'spamming', 'conning', 'hoax',
+        'cultish', 'fraud', 'violence', 'suicide', 'nudity', 'sexual content', 'scandal', 'fake',
+        'supremacist', 'extremist', 'propagate', 'abusive', 'malware', 'virus', 'troll', 'trolling',
+        'slanderous', 'deceit', 'deception', 'scamming', 'hoaxing', 'hurtful', 'torturous', 'painful',
+        'defamation', 'plagiarize', 'vandalize', 'exploit', 'manipulation', 'hatred', 'degrading',
+        'provocateur', 'liar', 'disruptive', 'destructive', 'controversy', 'spreading hate',
+        'disturbing content', 'offensive language', 'bully', 'spamming behavior', 'false information',
+        'conspiracy theory', 'false narrative', 'misinformation', 'abhorrent', 'triggering',
+        // Add more inappropriate words as needed
+      ];
+
+
+      // Convert the comment to lowercase for case-insensitive comparison
+      const lowerCaseComment = comment.toLowerCase();
+
+      // Check if the comment contains any inappropriate words
+      return !inappropriateWords.some(word => lowerCaseComment.includes(word));
+    }
+
+    // Function to handle form submission and display reactions/comments
+    function submitReaction(event) {
+      event.preventDefault();
+
+      const nameInput = document.getElementById('name');
+      const reactionInput = document.getElementById('reaction');
+      const comment = reactionInput.value;
+
+      // Check if the comment is valid before proceeding
+      if (!isCommentValid(comment)) {
+        alert("Your comment contains inappropriate content. Please be respectful.");
+        return;
+      }
+
+      // Get the current date and time
+      const currentDate = new Date();
+      const formattedDate = currentDate.toLocaleDateString();
+      const formattedTime = currentDate.toLocaleTimeString();
+
+      // Create a new comment object
+      const newComment = {
+        name: nameInput.value,
+        reaction: reactionInput.value,
+        date: formattedDate,
+        time: formattedTime,
+      };
+
+      // Check if there are existing comments in local storage
+      let existingComments = JSON.parse(localStorage.getItem('comments')) || [];
+
+      // Add the new comment to the existing comments array
+      existingComments.push(newComment);
+
+      // Save the updated comments array to local storage
+      localStorage.setItem('comments', JSON.stringify(existingComments));
+
+      // Call a function to display all comments, including the newly added one
+      displayComments();
+
+      // Clear the form fields
+      nameInput.value = '';
+      reactionInput.value = '';
+    }
+
+    // Function to display all comments from local storage
+    function displayComments() {
+      const reactionsList = document.getElementById('reactionsList');
+      reactionsList.innerHTML = '';
+
+      // Get the comments from local storage
+      const comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+      // Loop through the comments and create elements to display them on the page
+      comments.forEach((comment) => {
+        const reactionElement = document.createElement('div');
+        reactionElement.classList.add('border', 'rounded', 'p-3', 'mt-3', 'bg-gray-100');
+        reactionElement.innerHTML = `
+          <h3 class="text-lg font-semibold">${comment.name}</h3>
+          <p>${comment.reaction}</p>
+          <span class="text-sm text-gray-500">${comment.date} at ${comment.time}</span>
+        `;
+
+        reactionsList.appendChild(reactionElement);
+      });
+    }
+
+    // Attach form submission event listener
+    const reactionForm = document.getElementById('reactionForm');
+    reactionForm.addEventListener('submit', submitReaction);
+
+    // Call the function to display existing comments when the page loads
+    window.addEventListener('DOMContentLoaded', displayComments);
+  </script>
+
+  <script src="script.js"></script>
+
+  <!-- Footer -->
+  <footer class="mt-auto">
+    <div class="max-w-screen-xl py-16 mx-auto">
+      <div class="grid grid-cols-1 gap-8 text-center mx-auto">
+        <div>
+          <p><b>Alexander ‘Greek’ Thomson</b></p>
+          <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+            Glasgow Life, 38 Albion Street, Glasgow G1<br />info@glasgowlife.org.uk
+          </p>
+          <div class="flex mx-auto">
+            <div class="mx-auto space-x-6 flex mt-8 text-gray-600 dark:text-gray-300">
+              <a class="transition duration-300 hover:opacity-75" href="https://www.facebook.com" target="_blank"
+                rel="noreferrer">
+                <span class="sr-only"> Facebook </span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd"
+                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                    clipRule="evenodd" />
+                </svg>
+              </a>
+              <a class="transition duration-300 hover:opacity-75" href="https://www.instagram.com" target="_blank"
+                rel="noreferrer">
+                <span class="sr-only"> Instagram </span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd"
+                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                    clipRule="evenodd" />
+                </svg>
+              </a>
+              <a class="transition duration-300 hover:opacity-75" href="https://twitter.com" target="_blank"
+                rel="noreferrer">
+                <span class="sr-only"> Twitter </span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+              </a>
+              <a class="transition duration-300 hover:opacity-75" href="https://www.linkedin.com" target="_blank"
+                rel="noreferrer">
+                <span class="sr-only">LinkedIn</span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-8 text-xs text-gray-600 dark:text-gray-300 text-center">
+        © 2023 Developed and Designed by
+        <a href="https://www.linkedin.com/in/joão-franco-452161195/" class="underline">Glasgow Life</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Image Details -->
+  <div id="imageDetails" class="hidden md:block w-1/2 px-5">
+    <h2 id="imageTitle" class="text-xl font-semibold mt-5 mb-2"></h2>
+    <p id="imageDescription" class="text-sm text-gray-600 dark:text-gray-300"></p>
+  </div>
+
+  <!-- Script for the LightBox -->
+  <script src="fade_in.js"></script>
+  <script src="menu.js"></script>
+  <script>
+    function shareToSocialMedia() {
+      const customMessage = "🏛️ Hey, this is fascinating! Explore the rich history of Alexander 'Greek' Thomson's collection at the museum! Don't miss out! 🏺🔍";
+
+      const title = document.getElementById('right-side-title').innerText;
+      const description = document.getElementById('right-side-description').innerText;
+
+      const shareData = {
+        title: title,
+        text: "\n" + customMessage + "\n\n" + "Title: " + title + "\n\n" + "Description: " + description,
+        url: window.location.href, // Change this to the actual URL of your page
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData)
+          .then(() => console.log('Shared successfully!'))
+          .catch((error) => console.error('Error sharing:', error));
+      } else {
+        alert('Sharing is not supported on this browser.');
+      }
+    }
+
+
+    // Function to read out the details in the .right-side section using TTS
+    function speakPopupDetails() {
+      const rightSideElement = document.querySelector('.right-side');
+      const textToRead = rightSideElement.innerText;
+
+      if ('speechSynthesis' in window) {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+        synth.speak(utterance);
+      } else {
+        alert('Sorry, speech synthesis is not supported in your browser.');
+      }
+    }
+
+    // Function to get the value of a specific query parameter from the URL
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    // Function to update the content on the page with the extracted data
+    function updatePageContent() {
+      const imageElement = document.querySelector('.constrained-image');
+      const accessionNoElement = document.getElementById('right-side-accession-no');
+      const mitchellLibraryNoElement = document.getElementById('right-side-mitchell-library-no');
+      const categoryElement = document.getElementById('right-side-category');
+      const titleElement = document.getElementById('right-side-title');
+      const locationElement = document.getElementById('right-side-location');
+      const techniqueElement = document.getElementById('right-side-technique');
+      const notesElement = document.getElementById('right-side-notes');
+      const dateElement = document.getElementById('right-side-date');
+      const mapIframe = document.getElementById('popup-content-map');
+
+      // Extract data from the query parameters
+      const imageSrc = getQueryParam('imageSrc');
+      const accessionNo = getQueryParam('accessionNo');
+      const mitchellLibraryNo = getQueryParam('mitchellLibraryNo');
+      const category = getQueryParam('category');
+      const title = getQueryParam('title');
+      const location = getQueryParam('location');
+      const technique = getQueryParam('technique');
+      const notes = getQueryParam('notes');
+      const date = getQueryParam('date');
+      const mapLink = getQueryParam('mapLink');
+
+      // Update the content on the page with the extracted data
+      imageElement.src = imageSrc;
+      accessionNoElement.textContent = `Accession No: ${accessionNo}`;
+      mitchellLibraryNoElement.textContent = `Mitchell Library No: ${mitchellLibraryNo}`;
+      categoryElement.textContent = `Category: ${category}`;
+      titleElement.textContent = title;
+      locationElement.innerHTML = `Location: ${location}`;
+      techniqueElement.textContent = `Technique: ${technique}`;
+      notesElement.textContent = `Notes: ${notes}`;
+      dateElement.textContent = date;
+      mapIframe.src = mapLink; // Set the map link as the iframe src
+    }
+
+    // Call the function to update the page content when the page loads
+    window.addEventListener('DOMContentLoaded', updatePageContent);
+
+  </script>
+
+</body>
+
+</html>

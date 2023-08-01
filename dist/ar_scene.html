@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexander ‘Greek’ Thomson - Collection</title>
+
+
+  <!-- Ar script -->
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+
+</head>
+
+<body
+  class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
+
+
+  <!-- Content -->
+  <a-scene arjs="sourceType: webcam;">
+    <a-marker preset="hiro">
+      <a-image></a-image>
+      
+      <a-entity id="info"  text="value: 1-wide\ndefault." position="1 0.5 0" scale="1 1 1"></a-entity>
+
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+
+  <script>
+    // Retrieve the imageSrc value from Session Storage
+    const imageSrc = sessionStorage.getItem('imageSrc');
+    console.log("The img src is " + imageSrc);
+    const splitSrc = imageSrc.split('/');
+
+    // Get the last element of the splitUrl array to get the desired part
+    const fileName = splitSrc[splitSrc.length - 1];
+
+    console.log(fileName); // Output: "alexander-thomson3.jpg"
+
+    document.querySelector("a-image").setAttribute("src", imageSrc);
+
+    const buildingTitle = sessionStorage.getItem('building_title');
+    const desc = sessionStorage.getItem('desc');
+    document.querySelector("#info").setAttribute("text", "color", "black");
+    document.querySelector("#info").setAttribute("text", "value", buildingTitle + "\n\n" + desc);
+
+  </script>
+
+</body>
+
+
+</html>

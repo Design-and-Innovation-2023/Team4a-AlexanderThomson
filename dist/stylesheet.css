@@ -1,0 +1,635 @@
+/* Styles for image and text container */
+.image-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Style for the text beside the image */
+.image-text {
+  position: absolute;
+  top: 0;
+  right: -200px;
+  /* Adjust this value to control the position of the text */
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  display: none;
+}
+
+/* Styles for the pop-up container and overlay */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9998;
+  /* Lower z-index to position below the popup */
+}
+
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 9999;
+  /* Higher z-index to position above the overlay */
+}
+
+.popup-image {
+  max-width: 50%;
+  /* Adjust the width as needed */
+  max-height: 100%;
+  object-fit: contain;
+  /* This ensures the image scales down properly within its container */
+  width: 50%;
+}
+
+.popup-text {
+  font-size: 18px;
+  padding: 10px;
+  /* background-color: aqua; */
+  max-width: 50%;
+  /* Adjust the width as needed */
+  padding-left: 40px;
+  padding-top: 50px;
+  box-sizing: border-box;
+  /* This includes padding and border in the element's total width and height */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: black;
+  /* Change the close button color to be visible on the white background */
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.popup-content {
+  display: flex;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  justify-content: center;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.popup-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 40px;
+}
+
+.detail-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.detail-label {
+  font-weight: bold;
+  width: 150px;
+  /* Adjust this value to control the width of the labels */
+}
+
+.detail-value {
+  margin-left: 10px;
+}
+
+.detail-value-header {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.detail-value1 {
+  margin-left: 50px;
+  font-weight: bold;
+}
+
+/* Add this to make sure the labels and values are on the same line */
+.detail-row .detail-label,
+.detail-row .detail-value {
+  display: inline-block;
+}
+
+#popup-content-title {
+  font-weight: bold;
+  font-size: 48px;
+}
+
+#popup-content-location {
+  font-style: italic;
+}
+
+#popup-content-date {
+  color: dimgray;
+}
+
+#popup-content-map {
+  height: 260px;
+}
+
+/* Style for view in AR button */
+.arBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  color: #fff;
+  background-color: #007bff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.arBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Active effect */
+.arBtn:active {
+  background-color: #003d80;
+}
+
+/* Focus effect */
+.arBtn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+
+.ttsBtn {
+  margin-left: 10px;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  color: #333;
+  /* Adjust the color as needed */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.pdfBtn {
+  margin-left: 10px;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  color: #333;
+  /* Adjust the color as needed */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.qrcodeBtn {
+  margin-left: 10px;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  color: #333;
+  /* Adjust the color as needed */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+#third-section {
+  margin: 0 auto;
+  display: flex;
+  width: 90%;
+  height: 500px
+    /* Subtract the height of the first-section and second-section from the viewport height */
+}
+
+.left-side {
+  flex: 1;
+  /* background-color: lightblue; Just for demonstration purposes */
+  display: flex;
+  /* Add a flex container to handle image alignment */
+  align-items: flex-end;
+  /* Align items to the bottom of the flex container */
+}
+
+.constrained-image {
+  width: 100%;
+  max-height: 100%;
+  display: block;
+  /* This ensures the image behaves as a block-level element */
+  margin-right: auto;
+  /* Push the image to the right to create the expansion effect */
+}
+
+
+.right-side {
+  position: relative;
+  /* Position the right-side div as a reference for absolute positioning */
+  flex: 1;
+  background-color: rgb(247, 247, 247);
+  overflow-y: auto;
+  /* Add vertical scrollbar when content overflows */
+  height: 800px;
+  /* Adjust the height as needed */
+  padding: 40px;
+  font-size: 18px;
+}
+
+#close-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1;
+  /* Add a higher z-index to keep the button above other elements */
+}
+
+.collection-image {
+  height: 400px;
+}
+
+.constrained-image {
+  width: 100%;
+  max-height: 100%;
+  display: block;
+  /* This ensures the image behaves as a block-level element */
+  margin: auto;
+  /* Center the image horizontally within the .left-side div */
+}
+
+#right-side-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 1.15;
+}
+
+#right-side-date {
+  color: grey;
+  margin-bottom: 20px;
+}
+
+/* #right-side-description {
+  margin-top: 20px;
+  margin-bottom: 20px;
+} */
+
+#right-side-accession-no {
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 1.15;
+}
+
+#right-side-mitchell-library-no {
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 1.15;
+}
+
+#right-side-category {
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 1.15;
+}
+
+#right-side-technique {
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 1.15;
+}
+
+#right-side-notes {
+  font-size: 16px;
+  margin-top: 20px;
+  line-height: 1.15;
+}
+
+
+#right-side-location {
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 1.15;
+}
+
+#right-side-button, .exportPDF, .downloadRoute {
+  margin-top: 20px;
+  background-color: rgb(58, 58, 58);
+  padding: 10px;
+  border-radius: 5px;
+  width: 180px;
+  color: white;
+}
+
+#close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
+#collection-header {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 80%;
+}
+
+.button-container {
+  position: relative;
+}
+
+/* Align icons in buttons inline */
+.button-container button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  /* Optional: Add some padding to the buttons */
+}
+
+#close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.arScene {
+  height: 100%;
+}
+
+.tutorialLink, #viewMore {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.tutorialLink:hover, #viewMore:hover {
+  text-decoration: none;
+  border-bottom: 2px solid #007bff;
+}
+
+/* Styles for the popup container */
+.tutorial-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  /* Make sure the popup appears on top of other content */
+}
+
+/* Styles for the popup content */
+.tutorial-popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  /* Adjust the width as needed */
+  max-width: 600px;
+  /* Set a maximum width for larger screens */
+}
+
+/* Styles for the close button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  line-height: 1;
+  color: #333;
+  /* Black color for the close button */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #007bff;
+  /* Blue color for the close button on hover */
+}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* CSS styles for the images inside the slideshow */
+.mySlides img {
+  width: 80%;
+  height: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+#container-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+#container-slider {
+  display: flex;
+  width: 300%;
+  transition: transform 0.3s ease;
+}
+
+.container1 {
+  flex: 0 0 33.33%;
+  height: 1000px;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.arrow-buttons {
+  /* position: absolute; */
+  top: 0;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Add this line to create a gap between the arrows and H1 */
+}
+
+.arrow-btn {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+}
+
+#left-btn,
+#right-btn {
+  display: none;
+  /* We'll hide the original buttons */
+}
+
+.container-top {
+  display: flex;
+  /* Use Flexbox to arrange the child elements in a row */
+  align-items: center;
+  /* Vertically center the elements */
+  gap: 10px;
+}
+
+.container-top h1 {
+  float: left;
+}
+
+
+.container1::-webkit-scrollbar {
+  width: 0;
+  /* Set the width of the scrollbar to 0 */
+}
+
+#twitter-container {
+  font-size: 16px;
+}
+
+#facebook-container {
+  font-size: 16px;
+}
+
+#instagram-container {
+  font-size: 16px;
+}
+
+/* Set a fixed height for the social-media-container to limit its height */
+.social-media-container {
+  height: 700px;
+  /* Adjust the height as per your requirement */
+  overflow: auto;
+  /* Add scrollbars when content overflows */
+}
+
+.hover-images img:hover {
+  transform: scale(0.9);
+}
