@@ -28,48 +28,6 @@
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   <!-- End - Fancybox Scripts -->
 
-  <!-- Add this style block in the <head> tag -->
-  <style>
-    /* Style for the comment form */
-    #commentForm {
-      display: flex;
-      flex-direction: column;
-    }
-
-    #commentText {
-      resize: vertical;
-    }
-
-    #commentForm textarea,
-    #commentForm button {
-      margin-top: 8px;
-    }
-
-    /* Style for individual comment */
-    .comment-item {
-      background-color: #f1f1f1;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 12px;
-      margin-bottom: 12px;
-    }
-
-    .comment-item p {
-      margin: 0;
-    }
-
-    .comment-item .comment-user {
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .comment-item .comment-date {
-      font-size: 12px;
-      color: #888;
-    }
-  </style>
-
-
 <body
   class="dark:bg-black bg-white text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500 flex flex-col min-h-screen">
   <!-- Navbar -->
@@ -145,15 +103,14 @@
 
   <!-- Content -->
   <div class="container mx-auto">
-
+    <h1 class="text-3xl pt-10"><b>Social Media</b></h1>
     <div id="container-wrapper">
-
       <div id="container-slider">
         <div class="container1" id="instagram-main-container">
           <div class="container-top">
-            <h1 class="text-3xl pt-10 pb-8"><b>Instagram</b></h1>
             <div class="arrow-buttons">
               <button class="arrow-btn left" onclick="slideLeft()">&lt;</button>
+              <h1 class="text-3xl pt-10 pb-8"><b>Instagram</b></h1>
               <button class="arrow-btn right" onclick="slideRight()">&gt;</button>
             </div>
           </div>
@@ -175,9 +132,9 @@
 
         <div class="container1" id="facebook-main-container">
           <div class="container-top">
-            <h1 class="text-3xl pt-10 pb-8"><b>Facebook</b></h1>
             <div class="arrow-buttons">
               <button class="arrow-btn" onclick="slideLeft()">&#8249;</button>
+              <h1 class="text-3xl pt-10 pb-8"><b>Facebook</b></h1>
               <button class="arrow-btn" onclick="slideRight()">&#8250;</button>
             </div>
           </div>
@@ -198,9 +155,9 @@
 
         <div class="container1" id="twitter-main-container">
           <div class="container-top">
-            <h1 class="text-3xl pt-10 pb-8"><b>Twitter</b></h1>
             <div class="arrow-buttons">
               <button class="arrow-btn" onclick="slideLeft()">&#8249;</button>
+              <h1 class="text-3xl pt-10 pb-8"><b>Twitter</b></h1>
               <button class="arrow-btn" onclick="slideRight()">&#8250;</button>
             </div>
 

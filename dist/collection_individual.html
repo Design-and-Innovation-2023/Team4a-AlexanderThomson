@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alexander ‘Greek’ Thomson</title>
+  <title>AGT - Collection</title>
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
   <!-- Styles -->
@@ -72,25 +72,7 @@
       object-fit: contain;
     }
   </style>
-<style>
-  .right-side {
-    position: relative;
-  }
 
-  .button-container {
-    display: flex;
-  }
-
-  .button-container button {
-    margin-right: 10px; /* Add some spacing between buttons */
-  }
-
-  .closeBtn {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-</style>
 
 <body
   class="dark:bg-black bg-white text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500 flex flex-col min-h-screen">
@@ -147,13 +129,13 @@
               </a>
             </li>
             <li class="group transition duration-300">
-              <a href="social_media.html" class="text-2xl" style="color: darkgray;">Social Media
+              <a href="contact.html" class="text-2xl" style="color: darkgray;">Contact
                 <span
                   class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
               </a>
             </li>
             <li class="group transition duration-300">
-              <a href="contact.html" class="text-2xl" style="color: darkgray;">Contact
+              <a href="social_media.html" class="text-2xl" style="color: darkgray;">Social Media
                 <span
                   class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
               </a>
@@ -176,15 +158,12 @@
       <section class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
         <div class="right-side">
           <div class="button-container">
-            
+            <span id="close-button" onclick="closePopup()">&times;</span>
             <button class="shareBtn" onclick="shareToSocialMedia()">
               <i class="fas fa-share-alt"></i>
             </button>
             <button class="ttsBtn" onclick="speakPopupDetails()">
               <i class="fas fa-volume-up"></i>
-            </button>
-            <button class="closeBtn" onclick="goBack()">
-              <i class="fas fa-times"></i>
             </button>
           </div>
 
@@ -193,11 +172,13 @@
           <div id="right-side-accession-no"></div>
           <div id="right-side-mitchell-library-no"></div>
           <div id="right-side-category"></div>
+          <div id="right-side-description"></div>
           <div id="right-side-technique"></div>
           <div id="right-side-notes"></div>
           <div id="right-side-location"></div>
 
-          <iframe id="popup-content-map" width="100%" height="850" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe id="popup-content-map" width="100%" height="850" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
           <br>
           <div class="ar_section">
             <p style="font-size: 16px">
@@ -205,7 +186,8 @@
             </p>
             <button id="right-side-button" onclick="viewInAR()">View In AR</button>
             <p style="font-size:12px">
-              Having trouble using this feature? <a href="#" class="tutorialLink" onclick="openPopup()">Try it in just 3 steps!</a>
+              Having trouble using this feature? <a href="#" class="tutorialLink" onclick="openPopup()">Try it in just 3
+                steps!</a>
             </p>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
           </div>
@@ -223,43 +205,42 @@
         <!-- Add your tutorial content here -->
         <!-- Slideshow container -->
         <div class="slideshow-container-wrapper">
-              <div class="slideshow-container">
-                  <div class="mySlides">
-                      <div class="numbertext" style="color: black">1 / 3</div>
-                      <img src="assets/tutorial/step1.jpg"
-                          alt="Step 1">
-                      <div class="text" style="color: black">Step 1: Select the "View in AR" button to start scanning.</div>
-                  </div>
+          <div class="slideshow-container">
+            <div class="mySlides">
+              <div class="numbertext" style="color: black">1 / 3</div>
+              <img src="assets/tutorial/step1.jpg" alt="Step 1">
+              <div class="text" style="color: black">Step 1: Select the "View in AR" button to start scanning.</div>
+            </div>
 
-                  <div class="mySlides">
-                      <div class="numbertext" style="color: black">2 / 3</div>
-                      <img src="assets/tutorial/step2.jpg"
-                          alt="Step 2">
-                      <div class="text" style="color: black">Step 2: Look for the Hiro image placed near the building which looks like this image.</div>
-                  </div>
+            <div class="mySlides">
+              <div class="numbertext" style="color: black">2 / 3</div>
+              <img src="assets/tutorial/step2.jpg" alt="Step 2">
+              <div class="text" style="color: black">Step 2: Look for the Hiro image placed near the building which
+                looks like this image.</div>
+            </div>
 
-                  <div class="mySlides">
-                      <div class="numbertext" style="color: black">3 / 3</div>
-                      <img src="assets/tutorial/step3.jpg"
-                          alt="Step 3">
-                      <div class="text" style="color: black">Step 3: Point the camera towards the Hiro image and an image will appear!</div>
-                  </div>
-                  <br>
-                  <br>
+            <div class="mySlides">
+              <div class="numbertext" style="color: black">3 / 3</div>
+              <img src="assets/tutorial/step3.jpg" alt="Step 3">
+              <div class="text" style="color: black">Step 3: Point the camera towards the Hiro image and an image will
+                appear!</div>
+            </div>
+            <br>
+            <br>
 
-                  <!-- Next and previous buttons -->
-                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-              </div>
-              <br>
-              <!-- The dots/circles -->
-              <div style="text-align:center">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-              </div>
-          
-      </div>
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          </div>
+          <br>
+          <!-- The dots/circles -->
+          <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+          </div>
+
+        </div>
 
         <br>
 
@@ -282,8 +263,11 @@
             class="border rounded px-2 py-1"></textarea>
         </div>
 
-        <button type="submit" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Post</button>
+        <div class="mt-5">
+          <button type="submit" class="post-btn ml-auto" style="width: 300px;">Post</button>
+        </div>
       </form>
+
 
       <!-- Scrollable container showing the latest 3 comments -->
       <div class="overflow-y-scroll" style="max-height: 300px;">
@@ -298,11 +282,6 @@
   </div>
 
   <script>
-function goBack() {
-    // Redirect back to the previous page
-    window.history.back();
-  }
-    
     let slideIndex = 1;
     showSlides(slideIndex);
 
@@ -320,16 +299,16 @@ function goBack() {
       let i;
       let slides = document.getElementsByClassName("mySlides");
       let dots = document.getElementsByClassName("dot");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
       for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
       }
       for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
       }
-      slides[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].className += " active";
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
     }
     // Function to check if a comment is valid
     function isCommentValid(comment) {
@@ -509,6 +488,10 @@ function goBack() {
   <!-- Script for the LightBox -->
   <script src="fade_in.js"></script>
   <script src="menu.js"></script>
+
+  <!-- Script for Google Sheets API -->
+  <script src="https://apis.google.com/js/api.js"></script>
+
   <script>
     function shareToSocialMedia() {
       const customMessage = "🏛️ Hey, this is fascinating! Explore the rich history of Alexander 'Greek' Thomson's collection at the museum! Don't miss out! 🏺🔍";
@@ -553,45 +536,67 @@ function goBack() {
     }
 
     // Function to update the content on the page with the extracted data
-    function updatePageContent() {
+    function updatePageContent(selectedData) {
       const imageElement = document.querySelector('.constrained-image');
-      const accessionNoElement = document.getElementById('right-side-accession-no');
-      const mitchellLibraryNoElement = document.getElementById('right-side-mitchell-library-no');
-      const categoryElement = document.getElementById('right-side-category');
-      const titleElement = document.getElementById('right-side-title');
-      const locationElement = document.getElementById('right-side-location');
-      const techniqueElement = document.getElementById('right-side-technique');
-      const notesElement = document.getElementById('right-side-notes');
-      const dateElement = document.getElementById('right-side-date');
-      const mapIframe = document.getElementById('popup-content-map');
 
-      // Extract data from the query parameters
-      const imageSrc = getQueryParam('imageSrc');
-      const accessionNo = getQueryParam('accessionNo');
-      const mitchellLibraryNo = getQueryParam('mitchellLibraryNo');
-      const category = getQueryParam('category');
-      const title = getQueryParam('title');
-      const location = getQueryParam('location');
-      const technique = getQueryParam('technique');
-      const notes = getQueryParam('notes');
-      const date = getQueryParam('date');
-      const mapLink = getQueryParam('mapLink');
+      // Extract data from the selectedData array (which contains the row from Google Sheets)    
+      const accessionNo = selectedData[0];
+      const mitchellLibraryNo = selectedData[1];
+      const category = selectedData[2];
+      const title = selectedData[3];
+      const location = selectedData[4];
+      const description = selectedData[5];
+      const technique = selectedData[6];
+      const notes = selectedData[7];
+      const date = selectedData[8];
+      const mapLink = selectedData[9];
 
       // Update the content on the page with the extracted data
-      imageElement.src = imageSrc;
-      accessionNoElement.textContent = `Accession No: ${accessionNo}`;
-      mitchellLibraryNoElement.textContent = `Mitchell Library No: ${mitchellLibraryNo}`;
-      categoryElement.textContent = `Category: ${category}`;
-      titleElement.textContent = title;
-      locationElement.innerHTML = `Location: ${location}`;
-      techniqueElement.textContent = `Technique: ${technique}`;
-      notesElement.textContent = `Notes: ${notes}`;
-      dateElement.textContent = date;
-      mapIframe.src = mapLink; // Set the map link as the iframe src
+      imageElement.src = `https://res.cloudinary.com/whathellahor/image/upload/v1690364185/alexanderthomson_collection/898034.${mitchellLibraryNo}.jpg`;
+      document.getElementById('right-side-accession-no').textContent = `Accession No: ${accessionNo}`;
+      document.getElementById('right-side-mitchell-library-no').textContent = `Mitchell Library No: ${mitchellLibraryNo}`;
+      document.getElementById('right-side-category').textContent = `Category: ${category}`;
+      document.getElementById('right-side-title').textContent = title;
+      document.getElementById('right-side-location').innerHTML = `Location: ${location}`;
+      document.getElementById('right-side-description').textContent = `Description: ${description}`;
+      document.getElementById('right-side-technique').textContent = `Technique: ${technique}`;
+      document.getElementById('right-side-notes').textContent = `Notes: ${notes}`;
+      document.getElementById('right-side-date').textContent = date;
+      document.getElementById('popup-content-map').src = mapLink; // Set the map link as the iframe src
+    }
+
+    // Function to fetch data from Google Sheets based on the selected image's data-record-number.
+    function fetchDataFromGoogleSheets() {
+      const record = getQueryParam('mitchellLibraryNo'); // Get the selected image's data-record-number from the URL
+      const spreadsheetId = '1X3BsIhXUoORpxrWLvRyGdPJuvxGLsVhrKNDIl8_K66U'; // Replace with the ID of your Google Sheets document
+      const range = `Sheet1!A2:J`; // Data is in columns A to J starting from row 2
+
+      // Construct the URL to fetch data using the API key
+      const apiKey = 'AIzaSyCrEUHIrnOP99v7T_7CXPFg7j3Zu75QWXw'; // Replace with your actual API key
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const values = data.values;
+
+          // Find record of collection info using mitchell library no.
+          const selectedData = values.find((row) => String(row[1]) === String(record)); // "mitchell_library_no" is in the second column
+          if (selectedData) {
+            updatePageContent(selectedData);
+          } else {
+            console.error('Data not found for the selected image.');
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching data from Google Sheets:', error);
+        });
     }
 
     // Call the function to update the page content when the page loads
-    window.addEventListener('DOMContentLoaded', updatePageContent);
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchDataFromGoogleSheets();
+    });
 
   </script>
 

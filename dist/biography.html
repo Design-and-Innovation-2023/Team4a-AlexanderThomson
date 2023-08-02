@@ -11,11 +11,13 @@
   <!-- Styles -->
   <link rel="stylesheet" href="output.css" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="stylesheet.css" />
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="dark:bg-black bg-white text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500 flex flex-col min-h-screen">
+<body
+  class="dark:bg-black bg-white text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500 flex flex-col min-h-screen">
   <!-- Navbar -->
   <header class="flex w-full overflow-hidden pt-10 pb-1">
     <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
@@ -58,8 +60,8 @@
               </a>
             </li>
             <li class="group transition duration-300">
-              <a href="biography.html" class="text-2xl">Biography 
-                <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>  
+              <a href="biography.html" class="text-2xl">Biography
+                <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>
               </a>
             </li>
             <li class="group transition duration-300">
@@ -78,7 +80,7 @@
               <a href="contact.html" class="text-2xl" style="color: darkgray;">Contact
                 <span
                   class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
-               </a>
+              </a>
             </li>
           </ul>
         </div>
@@ -86,49 +88,60 @@
     </nav>
   </header>
 
-  <!-- Content -->
-  <div class="container mx-auto">
-    <h1 class="text-3xl pt-10 pb-8"><b>Biography</b></h1>
-    <div class="grid grid-cols-2 gap-14 md:gap-20">
-      <div class="col-span-2 md:col-span-1 flex items-center justify-center"> <!-- Updated class here -->
-        <img src="./assets/alexander-thomson1.jpg" alt="Alexander Thomson" class="w-4/5 h-auto object-cover" />
-      </div>
-  
-      <section class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
-        <div class="block md:hidden">
-          <p class="text-3xl">Alexander "Greek" Thomson</p>
+<!-- Content -->
+<div class="container mx-auto">
+  <h1 class="text-3xl pt-10 pb-8"><b>Biography</b></h1>
+  <div class="grid grid-cols-2 gap-14 md:gap-20">
+
+    <section>
+      <!-- Container 1 -->
+      <div class="biography-container">
+        <div class="biography-image">
+          <img src="./assets/alexander-thomson1.jpg" alt="Alexander Thomson" class="w-full h-auto object-cover" />
         </div>
-        <p class="hidden md:block text-3xl font-bold mb-6">Alexander "Greek" Thomson</p>
-        <p class="mb-6">
-          Alexander "Greek" Thomson (9 April 1817 – 22 March 1875) was a renowned Scottish architect and architectural
-          theorist, known for his pioneering work in sustainable building practices. Despite being featured in the
-          architectural press of his time, his genius was not fully recognized beyond Glasgow during his lifetime.
-          However, since the 1950s and 1960s, there has been a revival of his critical reputation, particularly
-          regarding his potential influence on Frank Lloyd Wright.
-        </p>
-        <p class="mb-6">
-          Thomson, one of Glasgow's great Victorian architects, drew inspiration from Owen Jones, an architect and
-          theorist famous for his publication "Grammar of Ornament." Using this influence, Thomson developed his
-          distinctive Graeco-Egyptian architectural style, leading to his nickname "Alexander 'Greek' Thomson."
-        </p>
-        <p class="mb-6">
-          Throughout his career, Thomson designed a wide range of structures, including commercial warehouses, blocks of
-          tenements, terraces of houses, suburban villas, and churches. His architectural legacy is preserved in a
-          special Collection of drawings and sketches held by Glasgow Life. This unique Collection is of particular
-          importance because not much of Thomson's papers were preserved, largely due to the fact that his work gained
-          true appreciation only after his passing. The mission of Glasgow Life is to share this invaluable Collection
-          with the broader public and local community.
-        </p>
-      
-        <!-- Short text before the YouTube video link -->
-  <p class="mb-4 font-bold">Watch this video to learn more:</p>
-  <div class="mb-6">
-    <iframe width="100%" height="400" src="https://www.youtube.com/embed/qm2DVYZjyhA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section>
+      <div class="biography-info">
+        <div class="biography-paragraphs">
+          <p class="hidden md:block text-3xl font-bold mb-6">Alexander "Greek" Thomson</p>
+          <p class="mb-6">
+            Alexander "Greek" Thomson (9 April 1817 – 22 March 1875) was a renowned Scottish architect and
+            architectural theorist, known for his pioneering work in sustainable building practices. Despite being
+            featured in the architectural press of his time, his genius was not fully recognized beyond Glasgow during
+            his lifetime. However, since the 1950s and 1960s, there has been a revival of his critical reputation,
+            particularly regarding his potential influence on Frank Lloyd Wright.
+          </p>
+          <p class="mb-6">
+            Thomson, one of Glasgow's great Victorian architects, drew inspiration from Owen Jones, an architect and
+            theorist famous for his publication "Grammar of Ornament." Using this influence, Thomson developed his
+            distinctive Graeco-Egyptian architectural style, leading to his nickname "Alexander 'Greek' Thomson."
+          </p>
+          <p class="mb-6">
+            Throughout his career, Thomson designed a wide range of structures, including commercial warehouses,
+            blocks of tenements, terraces of houses, suburban villas, and churches. His architectural legacy is
+            preserved in a special Collection of drawings and sketches held by Glasgow Life. This unique Collection is
+            of particular importance because not much of Thomson's papers were preserved, largely due to the fact that
+            his work gained true appreciation only after his passing. The mission of Glasgow Life is to share this
+            invaluable Collection with the broader public and local community.
+          </p>
+        </div>
+      </div>
+
+      <!-- Short text before the YouTube video link -->
+      <div class="biography-video">
+        <p class="mb-4 font-bold">Watch this video to learn more:</p>
+        <div class="mb-6">
+          <iframe width="100%" height="400" src="https://www.youtube.com/embed/qm2DVYZjyhA" frameborder="0"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
   </div>
-      </section>
-      
-    </div>
-  </div>  
+</div>
+
 
   <!-- Footer -->
   <footer class="mt-auto">
